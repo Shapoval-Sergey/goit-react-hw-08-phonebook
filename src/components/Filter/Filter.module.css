@@ -1,0 +1,11 @@
+.filter {
+  width: 750px;
+  padding: 8px 0px 8px 0px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.label {
+  display: block;
+  margin-top: 14px;
+  font-size: 16px;
+}
