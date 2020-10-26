@@ -1,51 +1,52 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import contactsOperations from '../redux/contacts/contactsOperations';
+import Layout from './Layout';
+import routes from '../routes';
+import { authOperations } from '../redux/auth';
 
-import s from './App.module.css';
+const AsyncHomeViews = lazy(() =>
+  import('../views/HomeViews.js' /* webpackChunkName: "home-page" */),
+);
+const AsyncContactsViews = lazy(() =>
+  import('../views/ContactsViews.js' /* webpackChunkName: "contacts-page" */),
+);
+const AsyncLoginView = lazy(() =>
+  import('../views/LoginView.js' /* webpackChunkName: "login-page" */),
+);
+const AsyncRegisterView = lazy(() =>
+  import('../views/RegisterView.js' /* webpackChunkName: "register-page" */),
+);
 
 class App extends Component {
   componentDidMount() {
-    this.props.onFetchContacts();
+    this.props.onGetCurrentUser();
   }
 
   render() {
     return (
-      <div className={s.box}>
-        <CSSTransition
-          in={true}
-          appear
-          timeout={1000}
-          classNames={s}
-          unmountOnExit
-        >
-          <h1 className={s.title}>Phonebook</h1>
-        </CSSTransition>
-
-        <ContactForm />
-
-        <CSSTransition
-          in={true}
-          timeout={250}
-          classNames={s.filter}
-          unmountOnExit
-        >
-          <Filter />
-        </CSSTransition>
-
-        <ContactList />
-      </div>
+      <Layout>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <Route path={routes.home} exact component={AsyncHomeViews} />
+            <Route path={routes.login} exact component={AsyncLoginView} />
+            <Route path={routes.register} exact component={AsyncRegisterView} />
+            <Route
+              path={routes.contacts}
+              exact
+              component={AsyncContactsViews}
+            />
+            <Redirect to={routes.home} />
+          </Switch>
+        </Suspense>
+      </Layout>
     );
   }
 }
 
 const mapDispatchToProps = {
-  onFetchContacts: contactsOperations.fetchContacts,
+  onGetCurrentUser: authOperations.getCurrentUser,
 };
 
 export default connect(null, mapDispatchToProps)(App);
