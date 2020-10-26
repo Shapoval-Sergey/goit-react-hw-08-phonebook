@@ -1,17 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
+// Пример использование хуков чтобы избежать дублирование кода!!!
 
-const withAuth = WrappedComponent => {
-  function WithAuth(props) {
-    return <WrappedComponent {...props} />;
-  }
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { authSelectors } from '../../redux/auth';
 
-  const mapStateToProps = state => ({
-    isAuthenticated: authSelectors.isAuthenticated(state),
-  });
+// const withAuth = WrappedComponent => {
+//   function WithAuth(props) {
+//     return <WrappedComponent {...props} />;
+//   }
 
-  return connect(mapStateToProps)(WithAuth);
-};
+//   const mapStateToProps = state => ({
+//     isAuthenticated: authSelectors.isAuthenticated(state),
+//   });
 
-export default withAuth;
+//   return connect(mapStateToProps)(WithAuth);
+// };
+
+// export default withAuth;

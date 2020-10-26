@@ -1,8 +1,11 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './Layout';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+
 import routes from '../routes';
 import { authOperations } from '../redux/auth';
 
@@ -30,18 +33,30 @@ class App extends Component {
         <Layout>
           <Suspense fallback={<h1>Loading...</h1>}>
             <Switch>
-              <Route path={routes.home} exact component={AsyncHomeViews} />
-              <Route path={routes.login} exact component={AsyncLoginView} />
-              <Route
+              <PublicRoute
+                path={routes.home}
+                exact
+                component={AsyncHomeViews}
+                register={false}
+              />
+              <PrivateRoute
+                path={routes.contacts}
+                component={AsyncContactsViews}
+                exact
+              />
+              <PublicRoute
+                path={routes.login}
+                exact
+                component={AsyncLoginView}
+                register={true}
+              />
+              <PublicRoute
                 path={routes.register}
                 exact
                 component={AsyncRegisterView}
+                register={true}
               />
-              <Route
-                path={routes.contacts}
-                exact
-                component={AsyncContactsViews}
-              />
+
               <Redirect to={routes.home} />
             </Switch>
           </Suspense>

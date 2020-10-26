@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import contactsSelectors from '../../../redux/contacts/contactsSelectors';
@@ -21,12 +21,12 @@ const ContactListItem = ({ name, id, number, onRemove }) => {
   );
 };
 
-ContactListItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  onRemove: PropTypes.func.isRequired,
-};
+// ContactListItem.propTypes = {
+//   id: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   number: PropTypes.string.isRequired,
+//   onRemove: PropTypes.func.isRequired,
+// };
 
 const mapStateToProps = (state, ownProps) => {
   const contact = contactsSelectors.getContactsById(state, ownProps.id);

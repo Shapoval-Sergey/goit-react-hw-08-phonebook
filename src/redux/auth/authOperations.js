@@ -21,7 +21,7 @@ const register = credentials => dispatch => {
       token.set(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
-    .catch(error => dispatch(authActions.registerError(error)));
+    .catch(({ message }) => dispatch(authActions.registerError(message)));
 };
 
 const logIn = credentials => dispatch => {
@@ -33,7 +33,7 @@ const logIn = credentials => dispatch => {
       token.set(response.data.token);
       dispatch(authActions.loginSuccess(response.data));
     })
-    .catch(error => dispatch(authActions.loginError(error)));
+    .catch(({ message }) => dispatch(authActions.loginError(message)));
 };
 
 const getCurrentUser = () => (dispatch, getState) => {
@@ -51,7 +51,7 @@ const getCurrentUser = () => (dispatch, getState) => {
   axios
     .get('/users/current')
     .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
-    .catch(error => authActions.getCurrentUserError(error));
+    .catch(({ message }) => authActions.getCurrentUserError(message));
 };
 
 const logOut = () => dispatch => {
@@ -63,7 +63,7 @@ const logOut = () => dispatch => {
       token.unset();
       dispatch(authActions.logoutSuccess());
     })
-    .catch(error => dispatch(authActions.logoutError(error)));
+    .catch(({ message }) => dispatch(authActions.logoutError(message)));
 };
 
 export default { register, logOut, logIn, getCurrentUser };

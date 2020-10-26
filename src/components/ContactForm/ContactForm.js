@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import contactsOperations from '../../redux/contacts/contactsOperations';
 
@@ -62,11 +62,11 @@ class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.number,
-  onAddContact: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   number: PropTypes.string.isRequired,
+//   onAddContact: PropTypes.func.isRequired,
+// };
 
 // const mapStateToProps = (state) => state;
 

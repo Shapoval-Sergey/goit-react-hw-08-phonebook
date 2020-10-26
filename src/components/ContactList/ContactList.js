@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -17,13 +17,13 @@ const ContactList = ({ contacts }) => (
   </TransitionGroup>
 );
 
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-    }),
-  ),
-};
+// ContactList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.exact({
+//       id: PropTypes.string.isRequired,
+//     }),
+//   ),
+// };
 
 const mapStateToProps = state => ({
   contacts: contactsSelectors.getVisibleContacts(state),
