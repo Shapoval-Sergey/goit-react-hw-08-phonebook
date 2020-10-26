@@ -52,7 +52,7 @@ class LoginView extends Component {
             />
           </label>
 
-          <button type="submit">Register</button>
+          <button type="submit">LogIn</button>
         </form>
       </div>
     );

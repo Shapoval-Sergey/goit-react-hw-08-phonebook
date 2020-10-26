@@ -15,12 +15,13 @@ const token = {
 const register = credentials => dispatch => {
   dispatch(authActions.registerRequest());
 
-  axios.post('/users/signup', credentials).then(res => {
-    // token.set(res.data.token);
-    dispatch(authActions.registerSuccess(res.data)).catch(error =>
-      dispatch(authActions.registerError(error)),
-    );
-  });
+  axios
+    .post('/users/signup', credentials)
+    .then(response => {
+      token.set(response.data.token);
+      dispatch(authActions.registerSuccess(response.data));
+    })
+    .catch(error => dispatch(authActions.registerError(error)));
 };
 
 const logIn = credentials => dispatch => {

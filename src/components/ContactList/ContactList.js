@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import contactsSelectors from '../../redux/contacts/contactsSelectors';
+import { contactsSelectors } from '../../redux/contacts';
 import ContactListItem from './ContactListItem/ContactListItem';
 import s from './ContactList.module.css';
 

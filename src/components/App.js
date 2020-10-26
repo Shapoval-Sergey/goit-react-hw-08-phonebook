@@ -26,21 +26,27 @@ class App extends Component {
 
   render() {
     return (
-      <Layout>
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <Switch>
-            <Route path={routes.home} exact component={AsyncHomeViews} />
-            <Route path={routes.login} exact component={AsyncLoginView} />
-            <Route path={routes.register} exact component={AsyncRegisterView} />
-            <Route
-              path={routes.contacts}
-              exact
-              component={AsyncContactsViews}
-            />
-            <Redirect to={routes.home} />
-          </Switch>
-        </Suspense>
-      </Layout>
+      <BrowserRouter>
+        <Layout>
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Switch>
+              <Route path={routes.home} exact component={AsyncHomeViews} />
+              <Route path={routes.login} exact component={AsyncLoginView} />
+              <Route
+                path={routes.register}
+                exact
+                component={AsyncRegisterView}
+              />
+              <Route
+                path={routes.contacts}
+                exact
+                component={AsyncContactsViews}
+              />
+              <Redirect to={routes.home} />
+            </Switch>
+          </Suspense>
+        </Layout>
+      </BrowserRouter>
     );
   }
 }
