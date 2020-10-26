@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button, Box } from '@material-ui/core';
 
 const styles = {
   link: {
@@ -15,23 +16,36 @@ const styles = {
 };
 
 const AuthNav = () => (
-  <div>
-    <NavLink
-      to="/register"
-      exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Register
-    </NavLink>
-    <NavLink
-      to="/login"
-      exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Login
-    </NavLink>
+  <div
+    style={{
+      display: 'flex',
+    }}
+  >
+    <Box mr={2}>
+      <Button color="inherit" variant="outlined">
+        <NavLink
+          to="/register"
+          exact
+          style={styles.link}
+          activeStyle={styles.activeLink}
+        >
+          Register
+        </NavLink>
+      </Button>
+    </Box>
+
+    <Box mr={2}>
+      <Button color="secondary" variant="contained">
+        <NavLink
+          to="/login"
+          exact
+          style={styles.link}
+          activeStyle={styles.activeLink}
+        >
+          Login
+        </NavLink>
+      </Button>
+    </Box>
   </div>
 );
 

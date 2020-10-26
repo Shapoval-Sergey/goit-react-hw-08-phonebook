@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Container, AppBar, Toolbar } from '@material-ui/core';
+
 import Navigation from './Navigation';
 import UserMenu from './UserMenu';
 import AuthNav from './AuthNav';
@@ -14,15 +16,19 @@ const styles = {
   },
 };
 
-const AppBar = ({ isAuthenticated }) => (
-  <header style={styles.header}>
-    <Navigation />
-    {isAuthenticated ? <UserMenu /> : <AuthNav />}
-  </header>
+const NavBar = ({ isAuthenticated }) => (
+  <AppBar position="static">
+    <Container>
+      <header style={styles.header}>
+        <Navigation />
+        {isAuthenticated ? <UserMenu /> : <AuthNav />}
+      </header>
+    </Container>
+  </AppBar>
 );
 
 const mapStateToProps = state => ({
   isAuthenticated: authSelectors.isAuthenticated(state),
 });
 
-export default connect(mapStateToProps)(AppBar);
+export default connect(mapStateToProps)(NavBar);

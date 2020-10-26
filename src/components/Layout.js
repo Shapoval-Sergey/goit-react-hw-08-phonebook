@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from './AppBar';
+import NavBar from './NavBar';
 
 const styles = {
   container: {
@@ -12,7 +12,7 @@ const styles = {
 
 const Layout = ({ children }) => (
   <div style={styles.container}>
-    <AppBar />
+    <NavBar />
     {children}
   </div>
 );
