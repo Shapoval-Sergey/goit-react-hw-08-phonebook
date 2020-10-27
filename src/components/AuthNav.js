@@ -1,43 +1,44 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { lime } from '@material-ui/core/colors';
 
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#2A363B',
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   },
-  activeLink: {
-    color: '#E84A5F',
-  },
-};
+}));
 
-const AuthNav = () => (
-  <div>
-    
-        <NavLink
-          to="/register"
-          exact
-          style={styles.link}
-          activeStyle={styles.activeLink}
-        >
+const ColorButton = withStyles(theme => ({
+  root: {
+    color: theme.palette.getContrastText(lime['A200']),
+    backgroundColor: lime['A200'],
+    '&:hover': {
+      backgroundColor: lime['A700'],
+    },
+  },
+}))(Button);
+
+const AuthNav = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <ColorButton variant="contained" color="primary">
+        <NavLink to="/register" exact>
           Register
         </NavLink>
-      
+      </ColorButton>
 
-  
-        <NavLink
-          to="/login"
-          exact
-          style={styles.link}
-          activeStyle={styles.activeLink}
-        >
+      <ColorButton variant="contained" color="primary">
+        <NavLink to="/login" exact>
           Login
         </NavLink>
-      
-  </div>
-);
+      </ColorButton>
+    </div>
+  );
+};
 
 export default AuthNav;

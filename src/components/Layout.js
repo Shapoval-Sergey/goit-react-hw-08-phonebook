@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 
 const styles = {
   container: {
-    width: '80vw',
+    width: '90vw',
     marginLeft: 'auto',
     marginRight: 'auto',
     padding: '0 24px',
