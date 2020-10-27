@@ -14,13 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ScopedCssBaseline>
-        <Container
-          maxWidth="sm"
-          style={{
-            height: '100vh',
-            marginLeft: '60px',
-          }}
-        >
+        <Container maxWidth="false">
           <App />
         </Container>
       </ScopedCssBaseline>
