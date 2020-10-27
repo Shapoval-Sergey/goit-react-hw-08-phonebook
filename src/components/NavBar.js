@@ -1,28 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { makeStyles } from '@material-ui/core/styles';
-// import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Container } from '@material-ui/core';
 
 import Navigation from './Navigation';
 import UserMenu from './UserMenu';
 import AuthNav from './AuthNav';
 import { authSelectors } from '../redux/auth';
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-// }));
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexGrow: 1,
+    backgroundColor: '#2196f3',
+  },
+}));
 
 // export default function ButtonAppBar() {
-//   const classes = useStyles();
-
 //   return (
 //     <div className={classes.root}>
 //       <AppBar position="static">
@@ -41,10 +36,17 @@ import { authSelectors } from '../redux/auth';
 // }
 
 const NavBar = ({ isAuthenticated }) => {
+  const classes = useStyles();
   return (
     <header>
-      <Navigation />
-      {isAuthenticated ? <UserMenu /> : <AuthNav />}
+      <AppBar position="static">
+      <Container maxWidth={false}>
+        <Toolbar className={classes.root}>
+          <Navigation />
+          {isAuthenticated ? <UserMenu /> : <AuthNav />}
+        </Toolbar>
+        <Container/>
+      </AppBar>
     </header>
   );
 };
