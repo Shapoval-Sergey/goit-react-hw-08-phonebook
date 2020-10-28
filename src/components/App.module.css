@@ -1,13 +1,19 @@
 .box {
-  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
   height: auto;
   margin-left: 40px;
+}
+
+.wrapper {
 }
 
 .title {
   color: blue;
   font-weight: 900;
-  font-size: 26px;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
@@ -17,7 +23,7 @@
 
 .appearActive {
   transform: translateX(0);
-  transition: transform 1000ms linear;
+  transition: transform 500ms linear;
 }
 
 .filter-enter {

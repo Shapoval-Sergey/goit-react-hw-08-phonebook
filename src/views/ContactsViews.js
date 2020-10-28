@@ -14,16 +14,16 @@ class ContactsViews extends Component {
 
   render() {
     return (
-      <>
-        <div className={s.box}>
+      <div className={s.box}>
+        <div className={s.wrapper}>
           <CSSTransition
             in={true}
             appear
-            timeout={1000}
+            timeout={500}
             classNames={s}
             unmountOnExit
           >
-            <h1 className={s.title}>Phonebook</h1>
+            <h2 className={s.title}>Phonebook</h2>
           </CSSTransition>
 
           <ContactForm />
@@ -36,10 +36,12 @@ class ContactsViews extends Component {
           >
             <Filter />
           </CSSTransition>
+        </div>
 
+        <div>
           <ContactList />
         </div>
-      </>
+      </div>
     );
   }
 }

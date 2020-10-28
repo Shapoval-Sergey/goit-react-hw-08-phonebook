@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 const NavBar = ({ isAuthenticated }) => {
   const classes = useStyles();
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: '#009688' }}>
       <Toolbar className={classes.root}>
         <Navigation />
         {isAuthenticated ? <UserMenu /> : <AuthNav />}

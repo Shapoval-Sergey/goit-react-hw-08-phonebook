@@ -10,7 +10,7 @@ import s from './ContactList.module.css';
 const ContactList = ({ contacts }) => (
   <TransitionGroup component="ul" className={s.list}>
     {contacts.map(({ id }) => (
-      <CSSTransition key={id} timeout={1000} classNames={s} unmountOnExit>
+      <CSSTransition key={id} timeout={250} classNames={s} unmountOnExit>
         <ContactListItem key={id} id={id} />
       </CSSTransition>
     ))}

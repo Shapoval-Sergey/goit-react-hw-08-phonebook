@@ -1,6 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import contactsSelectors from '../../../redux/contacts/contactsSelectors';
 import contactsOperations from '../../../redux/contacts/contactsOperations';
@@ -10,12 +12,17 @@ import s from './ContactListItem.module.css';
 const ContactListItem = ({ name, id, number, onRemove }) => {
   return (
     <li key={id} className={s.item}>
-      <p>{name}:</p>
+      <p className={s.name}>{name}:</p>
       <p>{number}</p>
       <section className={s.sect__btn}>
-        <button className={s.btn} type="button" onClick={onRemove}>
+        <Button
+          variant="contained"
+          color="secondary"
+          startIcon={<DeleteIcon />}
+          onClick={onRemove}
+        >
           Delete
-        </button>
+        </Button>
       </section>
     </li>
   );
