@@ -1,20 +1,10 @@
 .box {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
   height: auto;
   margin-left: 40px;
-}
-
-.wrapper {
-}
-
-.title {
-  color: blue;
-  font-weight: 900;
-  font-size: 18px;
-  text-transform: uppercase;
 }
 
 .appear {

@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+
 import { authSelectors } from '../redux/auth';
 import routes from '../routes';
+import s from './App.module.css';
 
 const styles = {
   link: {
@@ -15,30 +18,48 @@ const styles = {
   activeLink: {
     color: '#ff7961',
   },
+  title: {
+    color: '#ff7961',
+    fontSize: '20px',
+    textTransform: 'uppercase',
+    padding: '0 4px',
+    marginRight: '10px',
+    boxShadow: '0 0 0 6px #2196f3, 0 0 0 12px #ef5350',
+  },
+  box: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 };
 
 const Navigation = ({ isAuthenticated }) => (
-  <nav>
-    <NavLink
-      to={routes.home}
-      exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Home
-    </NavLink>
+  <div style={styles.box}>
+    <CSSTransition in={true} appear timeout={500} classNames={s} unmountOnExit>
+      <h2 style={styles.title}>Phonebook</h2>
+    </CSSTransition>
 
-    {isAuthenticated && (
+    <nav>
       <NavLink
-        to={routes.contacts}
+        to={routes.home}
         exact
         style={styles.link}
         activeStyle={styles.activeLink}
       >
-        Contacts
+        Home
       </NavLink>
-    )}
-  </nav>
+
+      {isAuthenticated && (
+        <NavLink
+          to={routes.contacts}
+          exact
+          style={styles.link}
+          activeStyle={styles.activeLink}
+        >
+          Contacts
+        </NavLink>
+      )}
+    </nav>
+  </div>
 );
 
 const mapStateToProps = state => ({

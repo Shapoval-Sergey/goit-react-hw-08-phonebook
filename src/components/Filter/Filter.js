@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
 
 import contactsSelectors from '../../redux/contacts/contactsSelectors';
 import contactsActions from '../../redux/contacts/contactsActions';
-import s from './Filter.module.css';
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
     <div>
-      <label className={s.label}>
-        Find contacts by name:
-        <input
-          className={s.filter}
-          placeholder="Enter name"
-          type="text"
-          value={value}
-          onChange={e => onChangeFilter(e.target.value)}
-        />
-      </label>
+      <TextField
+        id="outlined-basic"
+        label="Find contacts by name:"
+        variant="outlined"
+        value={value}
+        onChange={e => onChangeFilter(e.target.value)}
+        placeholder="Name"
+        size="small"
+        style={{ width: '440px', marginTop: '10px' }}
+      ></TextField>
     </div>
   );
 };

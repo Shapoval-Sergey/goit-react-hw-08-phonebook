@@ -5,7 +5,7 @@ import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { contactsOperations } from '../redux/contacts/';
 import { CSSTransition } from 'react-transition-group';
-import s from '../components/App';
+import s from '../components/App.module.css';
 
 class ContactsViews extends Component {
   componentDidMount() {
@@ -16,16 +16,6 @@ class ContactsViews extends Component {
     return (
       <div className={s.box}>
         <div className={s.wrapper}>
-          <CSSTransition
-            in={true}
-            appear
-            timeout={500}
-            classNames={s}
-            unmountOnExit
-          >
-            <h2 className={s.title}>Phonebook</h2>
-          </CSSTransition>
-
           <ContactForm />
 
           <CSSTransition

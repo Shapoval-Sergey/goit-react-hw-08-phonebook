@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
+import { Button, TextField } from '@material-ui/core/';
 
 import contactsOperations from '../../redux/contacts/contactsOperations';
 
@@ -31,32 +32,28 @@ class ContactForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className={s.form}>
-        <label className={s.label}>
-          Name:
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            placeholder="Enter name"
-          />
-        </label>
-        <label className={s.label}>
-          Number:
-          <input
-            className={s.input}
-            type="text"
-            name="number"
-            value={this.state.number}
-            onChange={this.handleChange}
-            placeholder="Enter number"
-          ></input>
-        </label>
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          value={this.state.name}
+          onChange={this.handleChange}
+          placeholder="Enter name"
+          style={{ width: '100%', marginBottom: '10px' }}
+        ></TextField>
+        <TextField
+          id="outlined-basic"
+          label="Number"
+          variant="outlined"
+          value={this.state.number}
+          onChange={this.handleChange}
+          placeholder="Enter number"
+          style={{ width: '100%', marginBottom: '10px' }}
+        ></TextField>
 
-        <button type="submit" className={s.btn}>
+        <Button variant="contained" color="primary" style={{ width: '100%' }}>
           Add contact
-        </button>
+        </Button>
       </form>
     );
   }
