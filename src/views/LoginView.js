@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, TextField } from '@material-ui/core/';
+
 import { authOperations } from '../redux/auth';
 
 const styles = {
   form: {
     width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 4,
   },
 };
 
@@ -32,27 +29,38 @@ class LoginView extends Component {
       <div>
         <h1>Login page</h1>
         <form onSubmit={this.handleSubmit} style={styles.form}>
-          <label style={styles.label}>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            name="email"
+            type="email"
+            value={email}
+            onChange={this.handleChange}
+            placeholder="Enter email"
+            style={{ width: '400px', marginBottom: '10px' }}
+          ></TextField>
 
-          <label style={styles.label}>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
+            name="password"
+            type="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="Enter password"
+            style={{ width: '400px', marginBottom: '10px' }}
+          ></TextField>
 
-          <button type="submit">LogIn</button>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ width: '400px' }}
+            type="submit"
+          >
+            Login
+          </Button>
         </form>
       </div>
     );

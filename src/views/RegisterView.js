@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, TextField } from '@material-ui/core/';
 
 import { authOperations } from '../redux/auth';
 
 const styles = {
   form: {
     width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 4,
   },
 };
 
@@ -38,36 +34,50 @@ class RegisterView extends Component {
       <div>
         <h1>Register page</h1>
         <form onSubmit={this.handleSubmit} style={styles.form}>
-          <label style={styles.label}>
-            Name
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label style={styles.label}>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            name="name"
+            type="text"
+            value={name}
+            onChange={this.handleChange}
+            placeholder="Enter name"
+            style={{ width: '400px', marginBottom: '10px' }}
+          ></TextField>
 
-          <label style={styles.label}>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            name="email"
+            type="email"
+            value={email}
+            onChange={this.handleChange}
+            placeholder="Enter email"
+            style={{ width: '400px', marginBottom: '10px' }}
+          ></TextField>
 
-          <button type="submit">Register</button>
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
+            name="password"
+            type="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="Enter password"
+            style={{ width: '400px', marginBottom: '10px' }}
+          ></TextField>
+
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ width: '400px' }}
+            type="submit"
+          >
+            Register
+          </Button>
         </form>
       </div>
     );

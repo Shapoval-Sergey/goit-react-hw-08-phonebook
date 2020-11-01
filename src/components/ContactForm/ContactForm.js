@@ -36,6 +36,8 @@ class ContactForm extends Component {
           id="outlined-basic"
           label="Name"
           variant="outlined"
+          name="name"
+          type="text"
           value={this.state.name}
           onChange={this.handleChange}
           placeholder="Enter name"
@@ -45,13 +47,20 @@ class ContactForm extends Component {
           id="outlined-basic"
           label="Number"
           variant="outlined"
+          name="number"
+          type="text"
           value={this.state.number}
           onChange={this.handleChange}
           placeholder="Enter number"
           style={{ width: '100%', marginBottom: '10px' }}
         ></TextField>
 
-        <Button variant="contained" color="primary" style={{ width: '100%' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ width: '100%' }}
+          type="submit"
+        >
           Add contact
         </Button>
       </form>
